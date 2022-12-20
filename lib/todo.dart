@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
+//list for todo
   List todo = <dynamic> [];
 
   @override
@@ -44,7 +44,7 @@ class _HomeState extends State<Home> {
                           FloatingActionButton(
                             child: const Icon(
                               Icons.check,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                             onPressed: () {
                               setState(() {
@@ -68,6 +68,7 @@ class _HomeState extends State<Home> {
               }
               return null;
             },
+            //Number and title
             child: ListTile(
                 leading: Text('${index + 1}'),
                 title: Text(todo[index]['title'],
@@ -84,6 +85,7 @@ class _HomeState extends State<Home> {
 
     );
   }
+  //Delete 
   Future<void> deleteTodo(String id) async {
     final url = Uri.parse('https://jsonplaceholder.typicode.com/posts/$id');
     final response = await http.delete(url);
@@ -97,7 +99,7 @@ class _HomeState extends State<Home> {
     }
     getTodos();
   }
-
+//Get 
   Future <void> getTodos() async {
     final url = Uri.parse('https://jsonplaceholder.typicode.com/posts');
     final response = await http.get(url);
@@ -107,7 +109,7 @@ class _HomeState extends State<Home> {
     }
     );
   }
-
+//For Delete slide
   Widget slideLeftBackground() {
     return Container(
       color: Colors.red,
